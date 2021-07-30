@@ -172,7 +172,7 @@ With that, we can conclude that **the estimated variance is $\sigma^2=1.73702611
 ------------
 #### **C. Find the predicted mean rise in blood pressure level associated with a sound pressure level of 85 decibels.**
 
-Given the fitted simple line regression model, we can further obtain other useful data such predicting the mean rise in blood pressure given a particular pressure level.  If we try to predict blood pressure level mean rise at 85 dB, we get the following solution: <br>
+Given the fitted simple line regression model, we can further obtain other useful data such **predicting the mean rise in blood pressure given a particular pressure level**.  If we try to predict blood pressure level mean rise at 85 dB, we get the following solution: <br><br>
 
 <center>
   $\hat{y}=0.1742939331x-10.13153766$ <br>
