@@ -16,6 +16,58 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### ***An article in the Journal of Sound and Vibration ["Measurement of Noise-Evoked Blood Pressure by Means of Averaging Method: Relation between Blood Pressure Rise and PSL" (1991, Vol. 151(3), pp. 383-394)] described a study investigating the relationship between noise exposure and hypertension. The following data are representative of those reported in the article.***
 
+<br>
+
+<table style="width:100%"; border= 1px>
+  <tr>
+    <th>y</th>
+    <th>1</th>
+    <th>0</th>
+    <th>1</th>
+    <th>2</th>
+    <th>5</th>
+    <th>1</th>
+    <th>4</th>
+    <th>6</th>
+    <th>2</th>
+    <th>3</th>
+    <th>5</th>
+    <th>4</th>
+    <th>6</th>
+    <th>8</th>
+    <th>4</th>
+    <th>5</th>
+    <th>7</th>
+    <th>9</th>
+    <th>7</th>
+    <th>6</th>
+  </tr>
+ <tr>
+    <th>x</th>
+    <th>60</th>
+    <th>63</th>
+    <th>65</th>
+    <th>70</th>
+    <th>70</th>
+    <th>70</th>
+    <th>80</th>
+    <th>90</th>
+    <th>80</th>
+    <th>80</th>
+    <th>85</th>
+    <th>89</th>
+    <th>90</th>
+    <th>90</th>
+    <th>90</th>
+    <th>90</th>
+    <th>94</th>
+    <th>100</th>
+    <th>100</th>
+    <th>100</th>
+  </tr>
+</table>
+<br>
+
 ------------------------------
 #### **A. Draw a scatter diagram of y (blood pressure rise in millimeters of mercury) versus x (sound pressure level in decibels). Does a simple linear regression model seem reasonable in this situation?**
 
@@ -184,6 +236,7 @@ Given the fitted simple line regression model, we can further obtain other usefu
 
 <br><br><br>
 
+<<<<<<< HEAD
 
 ## Question 2
 
@@ -243,3 +296,36 @@ legend("topleft",
 
 ```
 
+=======
+## Question 2
+
+### An article in Optical Engineering ["Operating Curve Extraction of a Correlator's Filter" (2004, Vol. 43, pp. 2775-2779)] reported on the use of an optical correlator to perform an experiment by varying brightness and contrast. The resulting modulation is characterized by the useful range of gray levels. The data follow:
+
+-----
+
+#### **A. Fit a multiple linear regression model to these data.**
+
+-----
+
+#### **B. Estimate 𝜎2.**
+
+-----
+
+#### **C. Compute the standard errors of the regression coefficients.**
+
+-----
+
+#### **D. Predict the useful range when brightness = 80 and contrast = 75.**
+
+-----
+
+#### **E. Test for significance of regression using 𝛼=0.05. What is the P-value for this test?**
+
+-----
+
+#### **F.Construct a t-test on each regression coefficient. What conclusions can you draw about the variables in this model? Use 𝛼=0.05.**
+
+-----
+**References**
+<br><br><br>
+>>>>>>> 8d24b068fc6ce8c73b025905126fa84cb352cb8a
