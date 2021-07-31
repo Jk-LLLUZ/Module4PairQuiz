@@ -130,35 +130,35 @@ With these values solved for already, we may proceed to solving for $S_xy$ and $
 
 **For $S_xx$**
 $$
-  S_xx = \sum_{i = 1}^{n} x_i^2 - \frac{(\sum_{i = 1}^{n} x_i)^2}{n}
+  S_{xx} = \sum_{i = 1}^{n} x_i^2 - \frac{(\sum_{i = 1}^{n} x_i)^2}{n}
 $$
 <br>**For $S_xy$**
 $$
-  S_xy = \sum_{i = 1}^{n} x_i y_i - \frac{(\sum_{i = 1}^{n} x_i)(\sum_{i = 1}^{n} y_i)}{n}
+  S_{xy} = \sum_{i = 1}^{n} x_i y_i - \frac{(\sum_{i = 1}^{n} x_i)(\sum_{i = 1}^{n} y_i)}{n}
 $$
 <br> We then plug in the values we have already solved for as follows:<br><br>
 **For $S_xx$**
 
 <center>
 $$
-  S_xx = \sum_{i = 1}^{n} x_i^2 - \frac{(\sum_{i = 1}^{n} x_i)^2}{n}
+  S_{xx} = \sum_{i = 1}^{n} x_i^2 - \frac{(\sum_{i = 1}^{n} x_i)^2}{n}
 $$
 $$
-  S_xx = 140,176 - \frac{(1,656)^2}{20}
+  S_{xx} = 140,176 - \frac{(1,656)^2}{20}
 $$
-$S_xx = 3,059$
+$S_{xx} = 3,059$
 </center>
 
 <br>**For $S_xy$**
 <center>
 $$
-  S_xy = \sum_{i = 1}^{n} x_i y_i - \frac{(\sum_{i = 1}^{n} x_i)(\sum_{i = 1}^{n} y_i)}{n}
+  S_{xy} = \sum_{i = 1}^{n} x_i y_i - \frac{(\sum_{i = 1}^{n} x_i)(\sum_{i = 1}^{n} y_i)}{n}
 $$
 $$
-  S_xy = 7,654 - \frac{(1,656)(86)}{20}
+  S_{xy} = 7,654 - \frac{(1,656)(86)}{20}
 $$
 $$
-  S_xy = 533.2
+  S_{xy} = 533.2
 $$
 </center>
 
