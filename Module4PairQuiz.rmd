@@ -249,7 +249,7 @@ Given the fitted simple line regression model, we can further obtain other usefu
 
 -----
 
-```{r}
+```{r echo=FALSE}
 
 
 brightness  = c(54,61,65,100,100,100,50,57,54)
@@ -272,11 +272,10 @@ knitr::kable(input1, "pipe", col.names = c("Brightness", "Contrast", "Useful Ran
 
 -----
 
-```{r}
+```{r echo=FALSE}
 
 data2 <- lm(usefulrange ~ brightness + contrast)
 
-plot(data2)
 
 summary(data2)
 
