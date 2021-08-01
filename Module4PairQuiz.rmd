@@ -285,15 +285,11 @@ plot(data2)
 ```
 
 
-
-
-
-
 #### **B. Estimate $𝜎^2$.**
 
 -----
 
-
+*Using R Function:*
 ```{r}
 
 
@@ -302,14 +298,19 @@ plot(data2)
 
 ```
 
+**Solving For the *estimate of variance*.**
+
 
 $$\sigma^2 = \frac{SS_E}{n-p}$$
+
 
 $$ \sigma^2 = \frac{7928}{9-3} $$
 
 
 
+
 $$\sigma^2 =  1321.333 $$
+
 
 
 
@@ -321,34 +322,97 @@ $$ 1321.273 \approx 1321.333 \approx 1321 $$
 
 -----
 
-```{r}
-summary(input1)
+**Using R function:**
+```{r echo=FALSE}
 
+std = sqrt(diag(vcov(data2)))
+
+
+knitr::kable(std)
 ```
 #### **D. Predict the useful range when brightness = 80 and contrast = 75.**
 
 -----
 
+
+**Using R function:**
 ```{r}
 
 newdata = data.frame(brightness=80,contrast=75)
 predict(data2,newdata)
 
 ```
+**The Prediction is $\approx 61.5$ ng for the Useful Range, given that brightness is $80$% and contrast is $75$% **
+
 
 #### **E. Test for significance of regression using 𝛼=0.05. What is the P-value for this test?**
 
 -----
 
-```{r}
+```{r echo=FALSE}
 summary(data2)
 
 ```
+
+$$H_0 : \sigma_1^2 = \sigma_2^2$$
+$$H_1: \sigma_1^2 ≠ \sigma_2^2$$ 
+$$ The\ \ P-Value\ \ is\ \ 0.01459 $$
+
+$$P-Value\ \ <\ \ \alpha $$
+
+$$\therefore \ Null\ \ Hypothesis\ \ is\ \ Rejected.$$
+
+
+
+
 #### **F.Construct a t-test on each regression coefficient. What conclusions can you draw about the variables in this model? Use 𝛼=0.05.**
 
-
-
 -----
+
+```{r echo=FALSE}
+
+mb = mean(brightness)
+
+knitr::kable(mb,caption = 'Mean of Brightness', col.names = '=')
+
+
+
+
+bur<-data.frame(brightness, usefulrange)
+t.test(bur, mu=71.22, alt="two.sided",conf=0.95)
+```
+
+$$H_0 : \beta_1 = \beta_{1,0}$$
+$$H_0 : \beta_1 ≠ \beta_{1,0}$$
+
+$$0.08682 > (\alpha=0.05)$$
+**Failed to Reject.**
+
+
+**$\therefore$ there is no linear relationship existing between Brightness and Useful Range.**
+
+```{r echo=FALSE}
+mc = mean(contrast)
+
+knitr::kable(mc,caption = 'Mean of Contrast', col.names = '=')
+
+
+
+cur<-data.frame(contrast, usefulrange)
+t.test(cur, mu=71.22, alt="two.sided",conf=0.95)
+
+
+```
+
+$$H_0 : \beta_1 = \beta_{1,0}$$
+$$H_0 : \beta_1 ≠ \beta_{1,0}$$
+$$0.03271 < 0.05 \ \ Reject \  H_0$$
+**$\therefore$ there is a linear relationship existing betweem Contrast and Useful Range.**
+
+
+
+
+
 **References**
 <br><br><br>
 >>>>>>> 8d24b068fc6ce8c73b025905126fa84cb352cb8a

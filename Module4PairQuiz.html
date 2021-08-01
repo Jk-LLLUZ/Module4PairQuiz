@@ -440,8 +440,10 @@ sum(resid(SSE)^2)</code></pre>
 <div id="b.-estimate-𝜎2." class="section level4">
 <h4><strong>B. Estimate <span class="math inline">\(𝜎^2\)</span>.</strong></h4>
 <hr />
+<p><em>Using R Function:</em></p>
 <pre class="r"><code>(summary(data2)$sigma)**2 </code></pre>
 <pre><code>## [1] 1321.273</code></pre>
+<p><strong>Solving For the <em>estimate of variance</em>.</strong></p>
 <p><span class="math display">\[\sigma^2 = \frac{SS_E}{n-p}\]</span></p>
 <p><span class="math display">\[ \sigma^2 = \frac{7928}{9-3} \]</span></p>
 <p><span class="math display">\[\sigma^2 =  1321.333 \]</span></p>
@@ -450,27 +452,43 @@ sum(resid(SSE)^2)</code></pre>
 <div id="c.-compute-the-standard-errors-of-the-regression-coefficients." class="section level4">
 <h4><strong>C. Compute the standard errors of the regression coefficients.</strong></h4>
 <hr />
-<pre class="r"><code>summary(input1)</code></pre>
-<pre><code>##    brightness        contrast      usefulrange   
-##  Min.   : 50.00   Min.   :25.00   Min.   : 50.0  
-##  1st Qu.: 54.00   1st Qu.:35.00   1st Qu.: 80.0  
-##  Median : 61.00   Median :56.00   Median : 96.0  
-##  Mean   : 71.22   Mean   :54.11   Mean   :115.3  
-##  3rd Qu.:100.00   3rd Qu.:70.00   3rd Qu.:144.0  
-##  Max.   :100.00   Max.   :80.00   Max.   :255.0</code></pre>
+<p><strong>Using R function:</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">x</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">(Intercept)</td>
+<td align="right">45.2284742</td>
+</tr>
+<tr class="even">
+<td align="left">brightness</td>
+<td align="right">0.6762945</td>
+</tr>
+<tr class="odd">
+<td align="left">contrast</td>
+<td align="right">0.6887346</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="d.-predict-the-useful-range-when-brightness-80-and-contrast-75." class="section level4">
 <h4><strong>D. Predict the useful range when brightness = 80 and contrast = 75.</strong></h4>
 <hr />
+<p><strong>Using R function:</strong></p>
 <pre class="r"><code>newdata = data.frame(brightness=80,contrast=75)
 predict(data2,newdata)</code></pre>
 <pre><code>##        1 
 ## 61.51477</code></pre>
+<p><strong>The Prediction is <span class="math inline">\(\approx 61.5\)</span> ng for the Useful Range, given that brightness is <span class="math inline">\(80\)</span>% and contrast is <span class="math inline">\(75\)</span>% </strong></p>
 </div>
 <div id="e.-test-for-significance-of-regression-using-𝛼0.05.-what-is-the-p-value-for-this-test" class="section level4">
 <h4><strong>E. Test for significance of regression using 𝛼=0.05. What is the P-value for this test?</strong></h4>
 <hr />
-<pre class="r"><code>summary(data2)</code></pre>
 <pre><code>## 
 ## Call:
 ## lm(formula = usefulrange ~ brightness + contrast)
@@ -490,10 +508,65 @@ predict(data2,newdata)</code></pre>
 ## Residual standard error: 36.35 on 6 degrees of freedom
 ## Multiple R-squared:  0.7557, Adjusted R-squared:  0.6742 
 ## F-statistic: 9.278 on 2 and 6 DF,  p-value: 0.01459</code></pre>
+<p><span class="math display">\[H_0 : \sigma_1^2 = \sigma_2^2\]</span> <span class="math display">\[H_1: \sigma_1^2 ≠ \sigma_2^2\]</span> <span class="math display">\[ The\ \ P-Value\ \ is\ \ 0.01459 \]</span></p>
+<p><span class="math display">\[P-Value\ \ &lt;\ \ \alpha \]</span></p>
+<p><span class="math display">\[\therefore \ Null\ \ Hypothesis\ \ is\ \ Rejected.\]</span></p>
 </div>
 <div id="f.construct-a-t-test-on-each-regression-coefficient.-what-conclusions-can-you-draw-about-the-variables-in-this-model-use-𝛼0.05." class="section level4">
 <h4><strong>F.Construct a t-test on each regression coefficient. What conclusions can you draw about the variables in this model? Use 𝛼=0.05.</strong></h4>
 <hr />
+<table>
+<caption>Mean of Brightness</caption>
+<thead>
+<tr class="header">
+<th align="right">=</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">71.22222</td>
+</tr>
+</tbody>
+</table>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  bur
+## t = 1.8174, df = 17, p-value = 0.08682
+## alternative hypothesis: true mean is not equal to 71.22
+## 95 percent confidence interval:
+##   67.67102 118.88454
+## sample estimates:
+## mean of x 
+##  93.27778</code></pre>
+<p><span class="math display">\[H_0 : \beta_1 = \beta_{1,0}\]</span> <span class="math display">\[H_0 : \beta_1 ≠ \beta_{1,0}\]</span></p>
+<p><span class="math display">\[0.08682 &gt; (\alpha=0.05)\]</span> <strong>Failed to Reject.</strong></p>
+<p><strong><span class="math inline">\(\therefore\)</span> there is no linear relationship existing between Brightness and Useful Range.</strong></p>
+<table>
+<caption>Mean of Contrast</caption>
+<thead>
+<tr class="header">
+<th align="right">=</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">54.11111</td>
+</tr>
+</tbody>
+</table>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  cur
+## t = 1.0255, df = 17, p-value = 0.3195
+## alternative hypothesis: true mean is not equal to 71.22
+## 95 percent confidence interval:
+##   56.94322 112.50123
+## sample estimates:
+## mean of x 
+##  84.72222</code></pre>
+<p><span class="math display">\[H_0 : \beta_1 = \beta_{1,0}\]</span> <span class="math display">\[H_0 : \beta_1 ≠ \beta_{1,0}\]</span> <span class="math display">\[0.03271 &lt; 0.05 \ \ Reject \  H_0\]</span> <strong><span class="math inline">\(\therefore\)</span> there is a linear relationship existing betweem Contrast and Useful Range.</strong></p>
 <p><strong>References</strong> <br><br><br> &gt;&gt;&gt;&gt;&gt;&gt;&gt; 8d24b068fc6ce8c73b025905126fa84cb352cb8a</p>
 </div>
 </div>
