@@ -276,7 +276,7 @@ line=lm(a~c)
 abline(line, col="red")
 
 
-lines(b~c,
+points(b~c,
      main = "Optical Engineering",
      cex= 1,
      ylim = c(0, 150),
@@ -308,11 +308,42 @@ legend("topleft",
 
 #### **A. Fit a multiple linear regression model to these data.**
 
------
-
-#### **B. Estimate 𝜎2.**
 
 -----
+
+
+```{r}
+x=c(54,61,65,100,100,100,50,57,54)
+y=c(56,80,70,50,65,80,25,35,26)
+z=c(96,50,50,112,96,80,155,144,255)
+
+
+df1 = data.frame(x,y,z)
+
+input1 = df1[,c("x","y","z")]
+
+
+plot(input1)
+
+abline(input1)
+
+
+
+
+```
+
+
+#### **B. Estimate $𝜎^2$.**
+
+-----
+
+
+```{r}
+
+var(input1)
+
+```
+
 
 #### **C. Compute the standard errors of the regression coefficients.**
 
