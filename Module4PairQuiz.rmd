@@ -240,64 +240,7 @@ Given the fitted simple line regression model, we can further obtain other usefu
 
 ## Question 2
 
-```{r}
-#Question number 2
 
-
-a=c(54,61,65,100,100,100,50,57,54)
-b=c(56,80,70,50,65,80,25,35,26)
-c=c(96,50,50,112,96,80,155,144,255)
-
-Table2 = data.frame(a,b,c)
-
-Table2
-
-mean(a)
-mean(b)
-mean(c)
-
-median(a)
-median(b)
-median(c)
-
-
-var(a)
-
-plot(a~c,
-     main = "Optical Engineering",
-     xlab = "Useful Range (ng)",
-     ylab = "Brightness & Contrast (%)",
-     cex= 1,
-     ylim = c(0, 150),
-     col = "red",
-     pch=21,  bg="red") 
-
-line=lm(a~c)
-abline(line, col="red")
-
-
-points(b~c,
-     main = "Optical Engineering",
-     cex= 1,
-     ylim = c(0, 150),
-     col = "blue",
-     pch=21,  bg="blue") 
-
-line=lm(b~c)
-abline(line, col="blue")
-
-
-
-
-grid()
-legend("topleft",
-       legend = c("Brightness", "Contrast"),
-       pch = c(21,21,21),
-       col = c("red", "blue")
-       )
-
-
-```
 
 =======
 ## Question 2
@@ -306,31 +249,44 @@ legend("topleft",
 
 -----
 
-#### **A. Fit a multiple linear regression model to these data.**
-
-
------
-
-
 ```{r}
-x=c(54,61,65,100,100,100,50,57,54)
-y=c(56,80,70,50,65,80,25,35,26)
-z=c(96,50,50,112,96,80,155,144,255)
 
 
-df1 = data.frame(x,y,z)
+brightness  = c(54,61,65,100,100,100,50,57,54)
+contrast    = c(56,80,70,50,65,80,25,35,26)
+usefulrange = c(96,50,50,112,96,80,155,144,255)
 
-input1 = df1[,c("x","y","z")]
+data1 = data.frame(brightness,contrast,usefulrange)
 
+input1 = data1[,c("brightness","contrast","usefulrange")]
 
-plot(input1)
-
-abline(input1)
+knitr::kable(input1, "pipe", col.names = c("Brightness", "Contrast", "Useful Range"), align = c("c", "c", "c"))
 
 
 
 
 ```
+
+
+#### **A. Fit a multiple linear regression model to these data.**
+
+-----
+
+```{r}
+
+data2 <- lm(usefulrange ~ brightness + contrast)
+
+
+summary(data2)
+
+plot(data2)
+
+
+```
+
+
+
+
 
 
 #### **B. Estimate $𝜎^2$.**
@@ -340,7 +296,9 @@ abline(input1)
 
 ```{r}
 
-var(input1)
+
+(summary(data2)$sigma)**2 
+
 
 ```
 
