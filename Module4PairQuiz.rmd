@@ -240,61 +240,7 @@ Given the fitted simple line regression model, we can further obtain other usefu
 
 ## Question 2
 
-```{r}
-#Question number 2
 
-
-a=c(54,61,65,100,100,100,50,57,54)
-b=c(56,80,70,50,65,80,25,35,26)
-c=c(96,50,50,112,96,80,155,144,255)
-
-
-mean(a)
-mean(b)
-mean(c)
-
-median(a)
-median(b)
-median(c)
-
-
-var(a)
-
-plot(a~c,
-     main = "Optical Engineering",
-     xlab = "Useful Range (ng)",
-     ylab = "Brightness & Contrast (%)",
-     cex= 1,
-     ylim = c(0, 150),
-     col = "red",
-     pch=21,  bg="red") 
-
-line=lm(a~c)
-abline(line, col="red")
-
-
-lines(b~c,
-     main = "Optical Engineering",
-     cex= 1,
-     ylim = c(0, 150),
-     col = "blue",
-     pch=21,  bg="blue") 
-
-line=lm(b~c)
-abline(line, col="blue")
-
-
-
-
-grid()
-legend("topleft",
-       legend = c("Brightness", "Contrast"),
-       pch = c(21,21,21),
-       col = c("red", "blue")
-       )
-
-
-```
 
 =======
 ## Question 2
@@ -303,29 +249,170 @@ legend("topleft",
 
 -----
 
+```{r echo=FALSE}
+
+
+brightness  = c(54,61,65,100,100,100,50,57,54)
+contrast    = c(56,80,70,50,65,80,25,35,26)
+usefulrange = c(96,50,50,112,96,80,155,144,255)
+
+data1 = data.frame(brightness,contrast,usefulrange)
+
+input1 = data1[,c("brightness","contrast","usefulrange")]
+
+knitr::kable(input1, "pipe", col.names = c("Brightness", "Contrast", "Useful Range"), align = c("c", "c", "c"))
+
+
+
+
+```
+
+
 #### **A. Fit a multiple linear regression model to these data.**
 
 -----
 
-#### **B. Estimate 𝜎2.**
+```{r echo=FALSE}
+
+data2 <- lm(usefulrange ~ brightness + contrast)
+
+
+summary(data2)
+
+plot(data2)
+
+
+```
+
+
+#### **B. Estimate $𝜎^2$.**
 
 -----
+
+*Using R Function:*
+```{r}
+
+
+(summary(data2)$sigma)**2 
+
+
+```
+
+**Solving For the *estimate of variance*.**
+
+
+$$\sigma^2 = \frac{SS_E}{n-p}$$
+
+
+$$ \sigma^2 = \frac{7928}{9-3} $$
+
+
+
+
+$$\sigma^2 =  1321.333 $$
+
+
+
+
+$$ 1321.273 \approx 1321.333 \approx 1321 $$ 
+
+
 
 #### **C. Compute the standard errors of the regression coefficients.**
 
 -----
 
+**Using R function:**
+```{r echo=FALSE}
+
+std = sqrt(diag(vcov(data2)))
+
+
+knitr::kable(std)
+```
 #### **D. Predict the useful range when brightness = 80 and contrast = 75.**
 
 -----
+
+
+**Using R function:**
+```{r}
+
+newdata = data.frame(brightness=80,contrast=75)
+predict(data2,newdata)
+
+```
+**The Prediction is $\approx 61.5$ ng for the Useful Range, given that brightness is $80$% and contrast is $75$% **
+
 
 #### **E. Test for significance of regression using 𝛼=0.05. What is the P-value for this test?**
 
 -----
 
+```{r echo=FALSE}
+summary(data2)
+
+```
+
+$$H_0 : \sigma_1^2 = \sigma_2^2$$
+$$H_1: \sigma_1^2 ≠ \sigma_2^2$$ 
+$$ The\ \ P-Value\ \ is\ \ 0.01459 $$
+
+$$P-Value\ \ <\ \ \alpha $$
+
+$$\therefore \ Null\ \ Hypothesis\ \ is\ \ Rejected.$$
+
+
+
+
 #### **F.Construct a t-test on each regression coefficient. What conclusions can you draw about the variables in this model? Use 𝛼=0.05.**
 
 -----
+
+```{r echo=FALSE}
+
+mb = mean(brightness)
+
+knitr::kable(mb,caption = 'Mean of Brightness', col.names = '=')
+
+
+
+
+bur<-data.frame(brightness, usefulrange)
+t.test(bur, mu=71.22, alt="two.sided",conf=0.95)
+```
+
+$$H_0 : \beta_1 = \beta_{1,0}$$
+$$H_0 : \beta_1 ≠ \beta_{1,0}$$
+
+$$0.08682 > (\alpha=0.05)$$
+**Failed to Reject.**
+
+
+**$\therefore$ there is no linear relationship existing between Brightness and Useful Range.**
+
+```{r echo=FALSE}
+mc = mean(contrast)
+
+knitr::kable(mc,caption = 'Mean of Contrast', col.names = '=')
+
+
+
+cur<-data.frame(contrast, usefulrange)
+t.test(cur, mu=71.22, alt="two.sided",conf=0.95)
+
+
+```
+
+$$H_0 : \beta_1 = \beta_{1,0}$$
+$$H_0 : \beta_1 ≠ \beta_{1,0}$$
+$$0.03271 < 0.05 \ \ Reject \  H_0$$
+**$\therefore$ there is a linear relationship existing betweem Contrast and Useful Range.**
+
+
+
+
+
 **References**
 <br><br><br>
 >>>>>>> 8d24b068fc6ce8c73b025905126fa84cb352cb8a
