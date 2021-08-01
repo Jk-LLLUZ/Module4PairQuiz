@@ -276,6 +276,7 @@ knitr::kable(input1, "pipe", col.names = c("Brightness", "Contrast", "Useful Ran
 
 data2 <- lm(usefulrange ~ brightness + contrast)
 
+plot(data2)
 
 summary(data2)
 
