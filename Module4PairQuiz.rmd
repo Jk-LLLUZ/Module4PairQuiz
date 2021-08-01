@@ -349,6 +349,10 @@ var(input1)
 
 -----
 
+```{r}
+summary(input1)
+
+```
 #### **D. Predict the useful range when brightness = 80 and contrast = 75.**
 
 -----
