@@ -303,6 +303,20 @@ plot(data2)
 ```
 
 
+$$\sigma^2 = \frac{SS_E}{n-p}$$
+
+$$ \sigma^2 = \frac{7928}{9-3} $$
+
+
+
+$$\sigma^2 =  1321.333 $$
+
+
+
+$$ 1321.273 \approx 1321.333 \approx 1321 $$ 
+
+
+
 #### **C. Compute the standard errors of the regression coefficients.**
 
 -----
@@ -315,11 +329,24 @@ summary(input1)
 
 -----
 
+```{r}
+
+newdata = data.frame(brightness=80,contrast=75)
+predict(data2,newdata)
+
+```
+
 #### **E. Test for significance of regression using 𝛼=0.05. What is the P-value for this test?**
 
 -----
 
+```{r}
+summary(data2)
+
+```
 #### **F.Construct a t-test on each regression coefficient. What conclusions can you draw about the variables in this model? Use 𝛼=0.05.**
+
+
 
 -----
 **References**

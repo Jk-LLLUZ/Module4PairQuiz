@@ -456,6 +456,10 @@ summary(data2)</code></pre>
 <hr />
 <pre class="r"><code>(summary(data2)$sigma)**2 </code></pre>
 <pre><code>## [1] 1321.273</code></pre>
+<p><span class="math display">\[\sigma^2 = \frac{SS_E}{n-p}\]</span></p>
+<p><span class="math display">\[ \sigma^2 = \frac{7928}{9-3} \]</span></p>
+<p><span class="math display">\[\sigma^2 =  1321.333 \]</span></p>
+<p><span class="math display">\[ 1321.273 \approx 1321.333 \approx 1321 \]</span></p>
 </div>
 <div id="c.-compute-the-standard-errors-of-the-regression-coefficients." class="section level4">
 <h4><strong>C. Compute the standard errors of the regression coefficients.</strong></h4>
@@ -472,10 +476,34 @@ summary(data2)</code></pre>
 <div id="d.-predict-the-useful-range-when-brightness-80-and-contrast-75." class="section level4">
 <h4><strong>D. Predict the useful range when brightness = 80 and contrast = 75.</strong></h4>
 <hr />
+<pre class="r"><code>newdata = data.frame(brightness=80,contrast=75)
+predict(data2,newdata)</code></pre>
+<pre><code>##        1 
+## 61.51477</code></pre>
 </div>
 <div id="e.-test-for-significance-of-regression-using-𝛼0.05.-what-is-the-p-value-for-this-test" class="section level4">
 <h4><strong>E. Test for significance of regression using 𝛼=0.05. What is the P-value for this test?</strong></h4>
 <hr />
+<pre class="r"><code>summary(data2)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = usefulrange ~ brightness + contrast)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -32.334 -20.090  -8.451   8.413  69.047 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)   
+## (Intercept) 238.5569    45.2285   5.274  0.00188 **
+## brightness    0.3339     0.6763   0.494  0.63904   
+## contrast     -2.7167     0.6887  -3.945  0.00759 **
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 36.35 on 6 degrees of freedom
+## Multiple R-squared:  0.7557, Adjusted R-squared:  0.6742 
+## F-statistic: 9.278 on 2 and 6 DF,  p-value: 0.01459</code></pre>
 </div>
 <div id="f.construct-a-t-test-on-each-regression-coefficient.-what-conclusions-can-you-draw-about-the-variables-in-this-model-use-𝛼0.05." class="section level4">
 <h4><strong>F.Construct a t-test on each regression coefficient. What conclusions can you draw about the variables in this model? Use 𝛼=0.05.</strong></h4>
