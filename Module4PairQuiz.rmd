@@ -250,10 +250,8 @@ Given the fitted simple line regression model, we can further obtain other usefu
 
 
 
-=======
-## Question 2
 
-### An article in Optical Engineering ["Operating Curve Extraction of a Correlator's Filter" (2004, Vol. 43, pp. 2775-2779)] reported on the use of an optical correlator to perform an experiment by varying brightness and contrast. The resulting modulation is characterized by the useful range of gray levels. The data follow:
+### **An article in Optical Engineering ["Operating Curve Extraction of a Correlator's Filter" (2004, Vol. 43, pp. 2775-2779)] reported on the use of an optical correlator to perform an experiment by varying brightness and contrast. The resulting modulation is characterized by the useful range of gray levels. The data follow:**
 
 -----
 
@@ -276,6 +274,8 @@ knitr::kable(input1, "pipe", col.names = c("Brightness", "Contrast", "Useful Ran
 ```
 
 
+\\
+
 #### **A. Fit a multiple linear regression model to these data.**
 
 -----
@@ -292,6 +292,7 @@ plot(data2)
 
 ```
 
+\\
 
 #### **B. Estimate $𝜎^2$.**
 
@@ -325,6 +326,8 @@ $$\sigma^2 =  1321.333 $$
 $$ 1321.273 \approx 1321.333 \approx 1321 $$ 
 
 
+\\
+
 
 #### **C. Compute the standard errors of the regression coefficients.**
 
@@ -338,6 +341,9 @@ std = sqrt(diag(vcov(data2)))
 
 knitr::kable(std)
 ```
+
+\\
+
 #### **D. Predict the useful range when brightness = 80 and contrast = 75.**
 
 -----
@@ -352,6 +358,8 @@ predict(data2,newdata)
 ```
 **The Prediction is $\approx 61.5$ ng for the Useful Range, given that brightness is $80$% and contrast is $75$% **
 
+
+\\
 
 #### **E. Test for significance of regression using 𝛼=0.05. What is the P-value for this test?**
 
@@ -371,7 +379,7 @@ $$P-Value\ \ <\ \ \alpha $$
 $$\therefore \ Null\ \ Hypothesis\ \ is\ \ Rejected.$$
 
 
-
+\\
 
 #### **F.Construct a t-test on each regression coefficient. What conclusions can you draw about the variables in this model? Use 𝛼=0.05.**
 
@@ -421,6 +429,5 @@ $$0.03271 < 0.05 \ \ Reject \  H_0$$
 
 
 
-**References**
+
 <br><br><br>
->>>>>>> 8d24b068fc6ce8c73b025905126fa84cb352cb8a
