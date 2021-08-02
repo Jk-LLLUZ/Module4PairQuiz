@@ -244,7 +244,6 @@ Given the fitted simple line regression model, we can further obtain other usefu
 
 <br><br><br>
 
-<<<<<<< HEAD
 
 ## Question 2
 
@@ -356,7 +355,7 @@ newdata = data.frame(brightness=80,contrast=75)
 predict(data2,newdata)
 
 ```
-**The Prediction is $\approx 61.5$ ng for the Useful Range, given that brightness is $80$% and contrast is $75$% **
+**The Prediction is $\approx 61.5$ for the Useful Range, given that brightness is $80$% and contrast is $75$% **
 
 
 \\
@@ -381,7 +380,7 @@ $$\therefore \ Null\ \ Hypothesis\ \ is\ \ Rejected.$$
 
 \\
 
-#### **F.Construct a t-test on each regression coefficient. What conclusions can you draw about the variables in this model? Use 𝛼=0.05.**
+#### **F. Construct a t-test on each regression coefficient. What conclusions can you draw about the variables in this model? Use 𝛼=0.05.**
 
 -----
 
@@ -423,10 +422,12 @@ t.test(cur, mu=71.22, alt="two.sided",conf=0.95)
 $$H_0 : \beta_1 = \beta_{1,0}$$
 $$H_0 : \beta_1 ≠ \beta_{1,0}$$
 $$0.03271 < 0.05 \ \ Reject \  H_0$$
-**$\therefore$ there is a linear relationship existing betweem Contrast and Useful Range.**
+**$\therefore$ there is a linear relationship existing between the Contrast and the Useful Range.**
 
+-----
+**References**
 
-
+D. C. Montgomery and G. C. Runger, Applied statistics and probability for engineers. New York: Wiley, 2003.
 
 
 
